@@ -1,0 +1,44 @@
+name: Petar Petrov OpenZiti Distribution
+version: 1.0.0-openziti-p-petrov-release
+author: Petar Petrov (petarpetrov216)
+
+components:
+  cli:
+    repo: https://github.com/petarpetrov216/ziti
+    version: 1.0.0-openziti-p-petrov-release
+    description: >
+      Custom-branded Ziti CLI with personalized versioning, authorship,
+      and build metadata. This is the primary control interface for the
+      Petar Petrov OpenZiti Distribution.
+
+  controller:
+    repo: https://github.com/openziti/edge
+    version: v0.40.0
+    description: >
+      Ziti Edge Controller. Provides the management plane, identity
+      management, policies, and API services.
+
+  router:
+    repo: https://github.com/openziti/fabric
+    version: v0.40.0
+    description: >
+      Ziti Fabric Router. Handles dataplane routing, link management,
+      and overlay forwarding.
+
+  tunnel:
+    repo: https://github.com/openziti/ziti-tunnel-sdk-c
+    version: v0.40.0
+    description: >
+      Ziti Tunnel SDK (C). Provides tunneling capabilities for clients
+      and hosts, enabling transparent access to overlay services.
+
+distribution:
+  type: curated-upstream
+  pinned: true
+  reproducible: true
+
+notes: |
+  This distribution defines a stable, reproducible OpenZiti environment
+  curated and branded by Petar Petrov. All components are pinned to
+  specific upstream versions to ensure deterministic builds and
+  operational consistency.

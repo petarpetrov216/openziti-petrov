@@ -151,6 +151,7 @@ func NewV1CmdRoot(in io.Reader, out, err io.Writer, cmd *cobra.Command) *cobra.C
 	fabricCommand := fabric.NewFabricCmd(p)
 	edgeCommand := edge.NewCmdEdge(out, err, p)
 	edgeCommand.AddCommand(run.NewQuickStartCmd(out, err, context.Background()))
+        distributionCmd := NewDistributionCmd()
 
 	demoCmd := demo.NewDemoCmd(p)
 	enrollCmd := enroll.NewEnrollCmd(p)
@@ -203,6 +204,7 @@ func NewV1CmdRoot(in io.Reader, out, err io.Writer, cmd *cobra.Command) *cobra.C
 			Commands: []*cobra.Command{
 				opsCommands,
 				NewDumpCliCmd(),
+                                distributionCmd,
 			},
 		},
 		{
@@ -265,6 +267,7 @@ func NewV2CmdRoot(in io.Reader, out, err io.Writer, cmd *cobra.Command) *cobra.C
 	fabricCommand := fabric.NewFabricCmd(p)
 	edgeCommand := edge.NewCmdEdge(out, err, p)
 	edgeCommand.AddCommand(run.NewQuickStartCmd(out, err, context.Background()))
+        distributionCmd := NewDistributionCmd()
 
 	demoCmd := demo.NewDemoCmd(p)
 	enrollCmd := enroll.NewEnrollCmd(p)
@@ -314,6 +317,7 @@ func NewV2CmdRoot(in io.Reader, out, err io.Writer, cmd *cobra.Command) *cobra.C
 			Commands: []*cobra.Command{
 				opsCommands,
 				NewDumpCliCmd(),
+                                distributionCmd,
 			},
 		},
 		{
@@ -333,6 +337,8 @@ func NewV2CmdRoot(in io.Reader, out, err io.Writer, cmd *cobra.Command) *cobra.C
 
 	cmd.AddCommand(gendoc.NewGendocCmd(cmd))
 	cmd.AddCommand(newCommandTreeCmd())
+
+        cmd.AddCommand(distributionCmd)
 
 	return cmd
 }
